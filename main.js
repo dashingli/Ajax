@@ -1,8 +1,8 @@
-const getCss = document.querySelector('#loadCss'); 
-getCss.onclick = ()=>{
+// css
+loadCss.onclick = ()=>{
     const xhr = new XMLHttpRequest();
     let response;
-    xhr.open('GET','./style.css');
+    xhr.open('GET','./public/style.css');
     xhr.send();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState === 4){
@@ -13,5 +13,17 @@ getCss.onclick = ()=>{
             styleTag.insertAdjacentHTML('beforeend',response);
         }
     }
-    
+}
+//js
+loadJs.onclick = () => {
+    const xhr  = new XMLHttpRequest();
+    xhr.open('GET','./public/1.js');
+    xhr.send();
+    xhr.onreadystatechange = function() {
+        if(this.readyState === 4){
+            const sc = document.createElement('script');
+            const script = document.body.appendChild(sc);
+            script.insertAdjacentHTML('beforeend',this.response);
+        }
+    }
 }
