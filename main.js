@@ -27,3 +27,16 @@ loadJs.onclick = () => {
         }
     }
 }
+// html
+loadHtml.onclick = () => {
+    const xhr  =  new XMLHttpRequest();
+    xhr.open('GET','./public/1.html');
+    xhr.send();
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+            const div = document.createElement('div');
+            div.innerHTML = xhr.response;
+            document.body.appendChild(div);
+        }
+    }
+}
